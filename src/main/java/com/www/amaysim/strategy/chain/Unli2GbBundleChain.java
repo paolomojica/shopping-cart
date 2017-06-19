@@ -19,11 +19,12 @@ public class Unli2GbBundleChain extends AbstPricingChain implements PricingChain
         CartItem item = getItem(cart, "ult_medium");
 
         if(item != null) {
+            if(item.getUnprocessed() != 0) {
+                CartItem i = new CartItem(ProductFactory.getProduct("1 GB Data-pack"), item.getUnprocessed());
+                i.setUnprocessed(0);
 
-            CartItem i = new CartItem(ProductFactory.getProduct("1 GB Data-pack"), item.getQuantity());
-            i.setUnprocessed(0);
-
-            cart.getCartItems().add(i);
+                cart.getCartItems().add(i);
+            }
         }
 
         if(super.next != null) {
