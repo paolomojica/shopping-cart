@@ -118,5 +118,45 @@ public class ScenarioTest {
         System.out.println(shoppingCart.getTotal());
     }
 
+    @Test(expected=IllegalArgumentException.class)
+    public void testInvalidPromoCode() {
+
+        // given
+        CartItem unli1gb = new CartItem(
+                ProductFactory.getProduct("Unlimited 1GB"),
+                1);
+
+        CartItem dataPack1gb = new CartItem(
+                ProductFactory.getProduct("1 GB Data-pack"),
+                1);
+
+        // when
+        PricingRulesStrategy strategy = new DefaultPricingRulesStrategy();
+        ShoppingCart shoppingCart = new ShoppingCartImpl(strategy);
+        shoppingCart.add(unli1gb);
+        shoppingCart.add(dataPack1gb, "DUMMY");
+
+        // then
+        // IllegalArgumentException thrown.
+    }
+
+    @Test
+    public void testEmptyShoppingCart() {
+
+        // given
+        // no cart item.
+
+        // when
+        PricingRulesStrategy strategy = new DefaultPricingRulesStrategy();
+        ShoppingCart shoppingCart = new ShoppingCartImpl(strategy);
+        // no cart item added on shopping cart.
+
+        // then
+        assertThat("Price is $0", shoppingCart.getTotal(), is(0.0));
+
+        System.out.println(shoppingCart.getItems());
+        System.out.println(shoppingCart.getTotal());
+    }
+
 
 }
