@@ -20,6 +20,7 @@ public class CalculateRemainingItemChain extends AbstPricingChain implements Pri
         for(CartItem i : cart.getCartItems()) {
             if(i.getUnprocessed() > 0) {
                 total = total + (i.getUnprocessed() * i.getProduct().getPrice());
+                i.setUnprocessed(0);
             }
         }
 

@@ -47,6 +47,7 @@ public class MainTest {
 
     }
 
+
     private static void testCalculation() {
 
         int total = 19;

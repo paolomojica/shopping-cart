@@ -52,15 +52,20 @@ public class ShoppingCartImpl implements ShoppingCart {
     }
 
     public Double getTotal() {
-        strategy.process(cart);
-        if(cart.getVisitor() != null) {
-            cart.accept(cart.getVisitor());
-        }
+        processCart();
         return cart.getTotal();
     }
 
     public List<CartItem> getItems() {
+        processCart();
         return cart.getCartItems();
+    }
+
+    private void processCart() {
+        strategy.process(cart);
+        if(cart.getVisitor() != null) {
+            cart.accept(cart.getVisitor());
+        }
     }
 
 
