@@ -2,8 +2,8 @@
 
 Shopping Cart App
 
-Main branch is DEV (as of this writing)
-To run the app, please refer to the test suite in src/test/java. (ScenarioTest.java)
+* Main branch is DEV (as of this writing)
+* To run the app, please refer to the test suite in src/test/java. (ScenarioTest.java)
 
 
 ### What is this repository for? ###
