@@ -16,12 +16,13 @@ public class EmptyCartChain extends AbstPricingChain implements PricingChain {
 
     public void process(Cart cart) {
 
-        cart.setTotal(0.0);
+        if(cart.getTotal() == null) {
+            cart.setTotal(0.0);
+        }
 
         if(cart.getCartItems().size() > 0 ) {
             super.next.process(cart);
         }
-
     }
 
 }
